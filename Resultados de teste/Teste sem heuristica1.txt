@@ -1,0 +1,37 @@
+Tempo Final: 297 + 349,837465272248 = 646,837465272248
+Tamanho populacao: 30 Numero de Geracoes: 1500 Taxa de Mutacao: 0,2
+Base Inimiga dificuldade: 60 
+		 nome: Su-46 poder de fogo: 1,2 vidas restantes: 0
+		 nome: MiG-35 poder de fogo: 1,1 vidas restantes: 1
+Base Inimiga dificuldade: 65 
+		 nome: F-35 Lightning II poder de fogo: 1,4 vidas restantes: 0
+Base Inimiga dificuldade: 70 
+		 nome: F-22 Raptor poder de fogo: 1,5 vidas restantes: 0
+		 nome: F-35 Lightning II poder de fogo: 1,4 vidas restantes: 0
+Base Inimiga dificuldade: 75 
+		 nome: F-22 Raptor poder de fogo: 1,5 vidas restantes: 0
+		 nome: F-35 Lightning II poder de fogo: 1,4 vidas restantes: 0
+Base Inimiga dificuldade: 80 
+		 nome: T-50 PAK FA poder de fogo: 1,3 vidas restantes: 0
+		 nome: Su-46 poder de fogo: 1,2 vidas restantes: 0
+Base Inimiga dificuldade: 85 
+		 nome: F-22 Raptor poder de fogo: 1,5 vidas restantes: 0
+		 nome: MiG-35 poder de fogo: 1,1 vidas restantes: 1
+Base Inimiga dificuldade: 90 
+		 nome: F-22 Raptor poder de fogo: 1,5 vidas restantes: 0
+		 nome: T-50 PAK FA poder de fogo: 1,3 vidas restantes: 0
+		 nome: Su-46 poder de fogo: 1,2 vidas restantes: 0
+Base Inimiga dificuldade: 95 
+		 nome: T-50 PAK FA poder de fogo: 1,3 vidas restantes: 0
+		 nome: Su-46 poder de fogo: 1,2 vidas restantes: 0
+		 nome: MiG-35 poder de fogo: 1,1 vidas restantes: 1
+Base Inimiga dificuldade: 100 
+		 nome: F-22 Raptor poder de fogo: 1,5 vidas restantes: 0
+		 nome: F-35 Lightning II poder de fogo: 1,4 vidas restantes: 0
+		 nome: MiG-35 poder de fogo: 1,1 vidas restantes: 1
+Base Inimiga dificuldade: 110 
+		 nome: F-35 Lightning II poder de fogo: 1,4 vidas restantes: 0
+		 nome: T-50 PAK FA poder de fogo: 1,3 vidas restantes: 0
+Base Inimiga dificuldade: 120 
+		 nome: T-50 PAK FA poder de fogo: 1,3 vidas restantes: 0
+		 nome: Su-46 poder de fogo: 1,2 vidas restantes: 0
