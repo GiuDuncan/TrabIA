@@ -5,23 +5,21 @@ using System.Linq;
 namespace TrabalhoIA
 {
    
-    public abstract class GraphBase<VT, ST>
+    public class Grafo<VT, ET> where VT : class
     {
-        protected Dictionary<VT, List<ST>> VerticesAdjecentes = new Dictionary<VT, List<ST>>();
+        protected Dictionary<VT, List<Tuple<ET, VT>>> VerticesAdjecentes = new Dictionary<VT, List<Tuple<ET, VT>>>();
 
-        public IEnumerable<VT> Vertices()
+        public IEnumerable<VT> PegarVertices()
         {
             return VerticesAdjecentes.Keys;
         }
 
-        public abstract IEnumerable<VT> VerticesAdjacentes(VT vertice);
-
         protected void AdicionarVertice(VT vertice)
         {
-            VerticesAdjecentes.Add(vertice, new List<ST>());
+            VerticesAdjecentes.Add(vertice, new List<Tuple<ET, VT>>());
         }
 
-        public virtual void DFS(VT root, Action<VT> preAction, Action<VT> postAction)
+        public void DFS(VT root, Action<VT> preAction, Action<VT> postAction)
         {
             DFS_Visit(root, preAction, postAction, new HashSet<VT>());
         }
@@ -40,36 +38,8 @@ namespace TrabalhoIA
             if (postAction != null)
                 postAction(vertice);
         }
-    }
 
-    public abstract class GraphProtected<VT> : GraphBase<VT, VT>
-    {
-        public override IEnumerable<VT> VerticesAdjacentes(VT vertice)
-        {
-            return VerticesAdjecentes[vertice];
-        }
 
-        protected void AdicionarArestas(VT origem, VT destino)
-        {
-            VerticesAdjecentes[origem].Add(destino);
-        }
-    }
-
-    public class Grafo<VT> : GraphProtected<VT>
-    {
-        public void AdicionarVerticeX(VT verticex)
-        {
-            AdicionarVertice(verticex);
-        }
-
-        public void AdicionarAresta(VT origem, VT destino)
-        {
-            AdicionarArestas(origem, destino);
-        }
-    }
-
-    public class Grafo<VT, ET> : GraphBase<VT, Tuple<ET, VT>> where VT : class
-    {
         public void AdicionarVetice(VT vertice)
         {
             AdicionarVertice(vertice);
@@ -80,14 +50,9 @@ namespace TrabalhoIA
             VerticesAdjecentes[verticeOrigem].Add(Tuple.Create(aresta, verticeDestino));
         }
 
-        public override IEnumerable<VT> VerticesAdjacentes(VT vertice)
+        public IEnumerable<VT> VerticesAdjacentes(VT vertice)
         {
             return VerticesAdjecentes[vertice].Select(verticeEAresta => verticeEAresta.Item2);
-        }
-
-        public IEnumerable<VT> PegarVertices()
-        {
-            return Vertices();
         }
 
         public ET PegarAresta(VT origem, VT destino)

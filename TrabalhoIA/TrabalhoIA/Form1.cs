@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -36,6 +37,7 @@ namespace TrabalhoIA
         private readonly int _numGeracoes = 2000;
         private readonly double _taxaDeMutacao = 0.4;
         private Terreno _inicio;
+        private Stopwatch _stopWatch;
 
         #endregion
         
@@ -54,12 +56,15 @@ namespace TrabalhoIA
             CheckForIllegalCrossThreadCalls = false;
             Task.Run(() =>
             {
-                grafo.AEstrela(_inicio, fim, Heuristica, (caminho, pontuacao) => {
-                    _caminho = caminho;
-                    _pontuacaoAEstrela = pontuacao;
-                    Refresh();
-                    Thread.Sleep(8);
-                });
+                _stopWatch = new Stopwatch();
+                _stopWatch.Start();
+                 grafo.AEstrela(_inicio, fim, Heuristica, (caminho, pontuacao) => {
+                     _caminho = caminho;
+                     _pontuacaoAEstrela = pontuacao;
+                     Refresh();
+                     Thread.Sleep(8);
+                 });
+                //Refresh();
                 RodaGa();
             });
         }
@@ -80,6 +85,7 @@ namespace TrabalhoIA
         {
             var ga = new GaJogo(_caminho, _tamPopulacao, _numGeracoes, _taxaDeMutacao);
             var melhorIndividuo = ga.Rodadas(ref _pontuacaoGa);
+            _stopWatch.Stop();
             EscreveSaida(melhorIndividuo);
         }
 
@@ -95,6 +101,7 @@ namespace TrabalhoIA
                     saida += string.Format("\t\t nome: {0} poder de fogo: {1} vidas restantes: {2}\r\n", aviao.Nome,
                         aviao.PoderDeFogo, aviao.PontosDeEnergia);
             }
+            saida += string.Format("Tempo decorrido: {0}",_stopWatch.Elapsed);
             var caminho = CaminhoSalvaArquivo();
             var arquivoSaida = new StreamWriter(caminho);
             arquivoSaida.Write(saida);
