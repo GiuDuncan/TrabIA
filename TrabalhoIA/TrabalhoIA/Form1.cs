@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -255,19 +256,18 @@ namespace TrabalhoIA
 
         void DesenhaCaminho(PaintEventArgs e)
         {
-            var redPen = new Pen(Color.BlueViolet, 3);
-            Func<int, int> f = d => d * _tamanhoDoQuadrado + _tamanhoDoQuadrado / 2;
+            Func<int, int> f = d => d * _tamanhoDoQuadrado;
 
-            if (_caminho != null && _caminho.Count > 1) for (int i = 0; i < _caminho.Count - 1; i++)
+            if (_caminho != null && _caminho.Count > 1) for (int i = 0; i < _caminho.Count; i++)
                 {
-                    Terreno o = _caminho[i], d = _caminho[i + 1];
-                    e.Graphics.DrawLine
+                    Terreno o = _caminho[i];
+                    e.Graphics.FillRectangle
                     (
-                        redPen,
+                        new SolidBrush(Color.FromArgb(128, Color.BlueViolet)),
                         f(o.x),
                         f(o.y),
-                        f(d.x),
-                        f(d.y)
+                        _tamanhoDoQuadrado,
+                        _tamanhoDoQuadrado
                     );
                 }
         }
